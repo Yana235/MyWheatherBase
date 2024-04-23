@@ -1,12 +1,21 @@
 package com.example.myweatherbase.activities;
 
+import android.content.ClipData;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.myweatherbase.API.Connector;
 import com.example.myweatherbase.R;
 import com.example.myweatherbase.activities.model.Root;
+import com.example.myweatherbase.activities.model.list.List;
+import com.example.myweatherbase.activities.model.list.Weather;
 import com.example.myweatherbase.base.BaseActivity;
 import com.example.myweatherbase.base.CallInterface;
 import com.example.myweatherbase.base.ImageDownloader;
@@ -15,8 +24,54 @@ import com.example.myweatherbase.base.Parameters;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MainActivity extends BaseActivity implements CallInterface {
+//public class MainActivity extends BaseActivity implements CallInterface {
+public class MainActivity extends AppCompatActivity {
+    private RecyclerView recycle;
+    private TextView city;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.recycler);
+        recycle = findViewById(R.id.recycler);
+        city = findViewById(R.id.textViewCity);
+        Root root=new Root();
+
+        AdaptarRecyclerView adaptador = new AdaptarRecyclerView(this);
+        recycle.setAdapter(adaptador);
+        recycle.setLayoutManager(new LinearLayoutManager(this));
+
+        ItemTouchHelper deslizar = new ItemTouchHelper(
+                new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN,
+                        ItemTouchHelper.LEFT) {
+                    @Override
+                    public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                        int posDestino=target.getAdapterPosition();
+                        int posicionInicial=viewHolder.getAdapterPosition();
+                        List list =root.list.get(posicionInicial);
+
+
+
+                        return true;
+                    }
+
+                    @Override
+                    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+
+                    }
+                }
+
+        );
+
+
+    }
+}
+
+
+
+
+
+    /*
     private TextView txtView ;
     private TextView textViewDay;
     private TextView textViewDayOfWeek;
@@ -27,7 +82,7 @@ public class MainActivity extends BaseActivity implements CallInterface {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txtView = findViewById(R.id.txtView);
+        txtView = findViewById(R.id.txtViewStateHeaven);
         textViewDay = findViewById(R.id.textViewDay);
         textViewDayOfWeek = findViewById(R.id.textViewDayOfWeek);
         imageView = findViewById(R.id.imageView);
@@ -35,6 +90,7 @@ public class MainActivity extends BaseActivity implements CallInterface {
         // Mostramos la barra de progreso y ejecutamos la llamada a la API
         showProgress();
         executeCall(this);
+
     }
 
     // Realizamos la llamada y recogemos los datos en un objeto Root
@@ -56,4 +112,8 @@ public class MainActivity extends BaseActivity implements CallInterface {
         textViewDayOfWeek.setText(dateDayOfWeek.format(date));
         textViewDay.setText(dateDay.format(date));
     }
-}
+        */
+
+
+
+
