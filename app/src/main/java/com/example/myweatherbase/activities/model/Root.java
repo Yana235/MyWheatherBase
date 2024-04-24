@@ -18,6 +18,23 @@ public class Root implements Serializable {
     public String getCity(){
         return city.name;
     }
+    /*
+    public static Root instance;
+
+
+
+    public Root(){
+        list=new ArrayList<>();
+    }
+
+    public static Root getInstance(){
+        if(instance==null){
+            instance=new Root();
+        }
+        return instance;
+    }
+
+     */
 
 }
 

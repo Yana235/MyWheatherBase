@@ -17,6 +17,7 @@ import com.example.myweatherbase.base.ImageDownloader;
 import com.example.myweatherbase.base.Parameters;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class AdaptarRecyclerView extends
@@ -26,10 +27,11 @@ public class AdaptarRecyclerView extends
     private Root roote;
 
 
-    public AdaptarRecyclerView(Context context){
+    public AdaptarRecyclerView(Context context,Root root){
         inflater=(LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
-        this.roote=Connector.getConector().get(Root.class,"lat=39.5862518&lon=-0.5411163");
+        this.roote=root;
+        //root=Connector.getConector().get(Root.class,"lat=39.5862518&lon=-0.5411163");
 
     }
     @NonNull
@@ -44,18 +46,18 @@ public class AdaptarRecyclerView extends
     @Override
     public void onBindViewHolder(@NonNull AdaptarRecyclerView.ViewHolder holder,
                                  int position){
-        Root root=roote;
 
 
-        holder.stateHeaven.setText(root.list.get(position).weather.get(position).description);
+        holder.stateHeaven.setText(roote.list.get(position).weather.get(0).description);
 
         ImageDownloader.downloadImage(Parameters.ICON_URL_PRE+
-                root.list.get(position).weather.get(position).icon+
+                roote.list.get(position).weather.get(0).icon+
                 Parameters.ICON_URL_POST,holder.images);
+        Date date = new Date((long)roote.list.get(0).dt*1000);
         SimpleDateFormat dateDayOfWeek = new SimpleDateFormat("E");
         SimpleDateFormat dateDay = new SimpleDateFormat("EEEE, d MMM yyyy HH:mm");
-        holder.day.setText(dateDay.format(dateDay));
-        holder.dayOfWeek.setText(dateDayOfWeek.format(dateDayOfWeek));
+        holder.day.setText(dateDay.format(date));
+        holder.dayOfWeek.setText(dateDayOfWeek.format(date));
     }
 
     @Override
