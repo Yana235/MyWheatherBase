@@ -2,8 +2,6 @@ package com.example.myweatherbase.activities;
 
 
     import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
 
     import androidx.recyclerview.widget.LinearLayoutManager;
     import androidx.recyclerview.widget.RecyclerView;
@@ -13,28 +11,21 @@ import com.example.myweatherbase.R;
 import com.example.myweatherbase.activities.model.Root;
 import com.example.myweatherbase.base.BaseActivity;
 import com.example.myweatherbase.base.CallInterface;
-import com.example.myweatherbase.base.ImageDownloader;
-import com.example.myweatherbase.base.Parameters;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-    public class MainActivity extends BaseActivity implements CallInterface {
+public class MainActivity extends BaseActivity implements CallInterface {
 
 
         private Root root;
         private RecyclerView recycler;
-
-
-            private TextView txtView ;
-        private TextView textViewDay;
-        private TextView textViewDayOfWeek;
-        private ImageView imageView;
+//        private TextView txtView ;
+//        private TextView textViewDay;
+//        private TextView textViewDayOfWeek;
+//        private ImageView imageView;
 
           @Override
           protected void onCreate(Bundle savedInstanceState) {
           super.onCreate(savedInstanceState);
-              setContentView(R.layout.recycler_view);
+              setContentView(R.layout.main_activity);
               recycler=findViewById(R.id.recycler);
 /*
               txtView = findViewById(R.id.txtViewStateHeaven);

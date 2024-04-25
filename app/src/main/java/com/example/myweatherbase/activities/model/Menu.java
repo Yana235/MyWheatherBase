@@ -1,5 +1,6 @@
 package com.example.myweatherbase.activities.model;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,6 +19,9 @@ public class Menu extends AppCompatActivity {
     private Spinner spinner;
     private Button enviar;
 
+    private Root root;
+    private Coord coord;
+
     @Override
     public void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
@@ -27,11 +31,21 @@ public class Menu extends AppCompatActivity {
         spinner=findViewById(R.id.spinner);
         enviar=findViewById(R.id.buttonEnviar);
 
-
-        ArrayAdapter<String>adaptadorSpinner=
+        ArrayAdapter<Coord>adaptadorSpinner=
                 new ArrayAdapter<>(this,
-                        android.R.layout.simple_spinner_item,
+                        android.R.layout.simple_spinner_item, RepositoryCoord.getInstance().getAll()
                         );
+        spinner.setAdapter(adaptadorSpinner);
+
+
+        enviar.setOnClickListener(view->{
+            Intent intent=new Intent();
+
+
+
+           Coord coord=(Coord) spinner.getSelectedItem();
+           intent.putExtra("ciudad",new City("Madrid",coord));
+        });
 
 
 

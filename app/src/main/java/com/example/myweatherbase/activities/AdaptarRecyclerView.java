@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myweatherbase.API.Connector;
 import com.example.myweatherbase.R;
 import com.example.myweatherbase.activities.model.Root;
 import com.example.myweatherbase.base.ImageDownloader;
@@ -18,7 +17,6 @@ import com.example.myweatherbase.base.Parameters;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 public class AdaptarRecyclerView extends
         RecyclerView.Adapter<AdaptarRecyclerView.ViewHolder> {
@@ -38,7 +36,7 @@ public class AdaptarRecyclerView extends
     @Override
     public AdaptarRecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
         int viewType){
-        View view=inflater.inflate(R.layout.activity_main,parent,false);
+        View view=inflater.inflate(R.layout.recycler,parent,false);
         return new ViewHolder(view);
 
     }
