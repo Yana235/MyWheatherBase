@@ -20,8 +20,11 @@ public class City implements Serializable {
 
     }
 
-    public Coord coord(){
+    public Coord getCoord(){
         return coord;
+    }
+    public String getName(){
+        return name;
     }
 
     public static City getCity(int index){

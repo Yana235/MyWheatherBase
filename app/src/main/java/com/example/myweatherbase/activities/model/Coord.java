@@ -11,15 +11,10 @@ public class Coord implements Serializable {
         this.lon=longitud;
     }
 
-    public Double getLat(){
-        return lat;
-    }
-    public Double getLon(){
-        return lat;
-    }
+
     @Override
     public String toString(){
-        return ""+lat+lon;
+        return "&lat="+lat+"&lon="+lon;
     }
 
 

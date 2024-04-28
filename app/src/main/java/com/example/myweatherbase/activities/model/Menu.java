@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myweatherbase.R;
+import com.example.myweatherbase.activities.MainActivity;
 
 public class Menu extends AppCompatActivity {
 
@@ -18,9 +19,6 @@ public class Menu extends AppCompatActivity {
     private TextView textInfo;
     private Spinner spinner;
     private Button enviar;
-
-    private Root root;
-    private Coord coord;
 
     @Override
     public void onCreate(Bundle savedInstance){
@@ -31,25 +29,27 @@ public class Menu extends AppCompatActivity {
         spinner=findViewById(R.id.spinner);
         enviar=findViewById(R.id.buttonEnviar);
 
-        ArrayAdapter<Coord>adaptadorSpinner=
+        ArrayAdapter<City>adaptadorSpinner=
                 new ArrayAdapter<>(this,
-                        android.R.layout.simple_spinner_item, RepositoryCoord.getInstance().getAll()
-                        );
+                android.R.layout.simple_spinner_item,
+                        RepositoryCoord.getInstance().getAll());
+
         spinner.setAdapter(adaptadorSpinner);
 
 
+
+
         enviar.setOnClickListener(view->{
-            Intent intent=new Intent();
+        Intent intent=new Intent();
+            City city=(City) spinner.getSelectedItem();
+         //   String name=city.name.toString();
+            intent.putExtra("coordenadas",city.getCoord().toString());
+         //   intent.putExtra("nombre_ciudad",city.getName());
+            finish();
 
+          //  startActivity(intent);
 
-
-           Coord coord=(Coord) spinner.getSelectedItem();
-           intent.putExtra("ciudad",new City("Madrid",coord));
         });
-
-
-
-
 
     }
 
