@@ -37,26 +37,26 @@ public class Menu extends AppCompatActivity {
         spinner.setAdapter(adaptadorSpinner);
 
 
-
-
         enviar.setOnClickListener(view->{
-            try {
+
                 Intent intent = new Intent();
+
                 City city = (City) spinner.getSelectedItem();
-                //   String name=city.name.toString();
-                intent.putExtra("coordenadas", city.getCoord().toString());
-                //   intent.putExtra("nombre_ciudad",city.getName());
+                if (city != null) {
+                    String coord=city.getCoord().toString();
+                    //   String name=city.name.toString();
+                    intent.putExtra("coordenadas", coord);
+                    //   intent.putExtra("nombre_ciudad",city.getName());
+                    setResult(RESULT_OK,intent);
+                    finish();
+                }else {
+                    setResult(RESULT_CANCELED); // Indicar que la operación fue cancelada si no se seleccionó ninguna ciudad
 
-                finish();
+                }
 
-                // startActivity(intent);
-            }catch(Exception e){
-                e.getStackTrace();
-            }
 
         });
 
     }
-
 
 }

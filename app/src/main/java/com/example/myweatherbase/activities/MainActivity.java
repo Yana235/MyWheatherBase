@@ -1,6 +1,5 @@
 package com.example.myweatherbase.activities;
 
-
     import android.app.Activity;
     import android.content.Intent;
     import android.os.Bundle;
@@ -27,14 +26,9 @@ import com.example.myweatherbase.base.CallInterface;
 
 public class MainActivity extends BaseActivity implements CallInterface {
 
-
         private Root root;
         private RecyclerView recycler;
         private String coord ="&lat=39.5862518&lon=-0.5411163";
-//        private TextView txtView ;
-//        private TextView textViewDay;
-//        private TextView textViewDayOfWeek;
-//        private ImageView imageView;
     private FloatingActionButton anyiadir;
 
           @Override
@@ -54,11 +48,23 @@ public class MainActivity extends BaseActivity implements CallInterface {
                               result-> {
 
 
-                                      Intent data = result.getData();
 
-                                       coord = data.getExtras().getString("coordenadas");
-                                   //   root = Connector.getConector().get(Root.class, coord);
+                                 if (result.getResultCode() == Activity.RESULT_OK){
+                                      //Intent data = result.getData();
 
+                             // try{
+                                  coord = result.getData().getExtras().getString("coordenadas");
+/*
+                              }catch (NullPointerException e){
+                                  e.getStackTrace();
+                              }
+
+ */
+
+                                  }else if(result.getResultCode() == Activity.RESULT_CANCELED) {
+                                     Toast.makeText(this, "Cancelado por el usuario",
+                                             Toast.LENGTH_LONG).show();
+                                 }
 
 
                               }
@@ -68,24 +74,14 @@ public class MainActivity extends BaseActivity implements CallInterface {
                   anyiadir.setOnClickListener(view -> {
                       try{
                       Intent intent = new Intent(this, Menu.class);
-                      //  activityResultLauncher.launch(intent);
                       resultLauncher.launch(intent);
                       }catch(Exception e){
                           e.getStackTrace();
                       }
                   });
 
-
-
-        // Mostramos la barra de progreso y ejecutamos la llamada a la API
-
          }
-
-
-
-
-    // Realizamos la llamada y recogemos los datos en un objeto Root
-        @Override
+         @Override
         public void doInBackground() {
 
             root = Connector.getConector().get(Root.class,coord);
