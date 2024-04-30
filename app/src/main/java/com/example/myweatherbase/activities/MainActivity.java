@@ -30,6 +30,7 @@ public class MainActivity extends BaseActivity implements CallInterface {
 
         private Root root;
         private RecyclerView recycler;
+        private String coord ="&lat=39.5862518&lon=-0.5411163";
 //        private TextView txtView ;
 //        private TextView textViewDay;
 //        private TextView textViewDayOfWeek;
@@ -46,25 +47,27 @@ public class MainActivity extends BaseActivity implements CallInterface {
           showProgress();
         executeCall(this);
 
-              ActivityResultLauncher<Intent> activityResultLauncher =
+
+              ActivityResultLauncher<Intent> resultLauncher =
                       registerForActivityResult(
                               new ActivityResultContracts.StartActivityForResult(),
-                              new ActivityResultCallback<ActivityResult>() {
-                                  @Override
-                                  public void onActivityResult(ActivityResult result) {
-                                      Intent data=result.getData();
+                              result-> {
 
-                                      String coord= data.getExtras().getString("coordenadas");
-                                      root=Connector.getConector().get(Root.class,coord);
-                                      //   RepositoryCoord.getInstance().add(coord);
-                                  }
+
+                                      Intent data = result.getData();
+
+                                       coord = data.getExtras().getString("coordenadas");
+                                   //   root = Connector.getConector().get(Root.class, coord);
+
 
 
                               }
+
                       );
               anyiadir.setOnClickListener(view -> {
                   Intent intent = new Intent(this, Menu.class);
-                  activityResultLauncher.launch(intent);
+                //  activityResultLauncher.launch(intent);
+                  resultLauncher.launch(intent);
 
               });
 
@@ -79,9 +82,7 @@ public class MainActivity extends BaseActivity implements CallInterface {
         @Override
         public void doInBackground() {
 
-
-
-            root = Connector.getConector().get(Root.class,"&lat=39.5862518&lon=-0.5411163");
+            root = Connector.getConector().get(Root.class,coord);
         }
 
         // Una vez ya se ha realizado la llamada, ocultamos la barra de progreso y presentamos los datos

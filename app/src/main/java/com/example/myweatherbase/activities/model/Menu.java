@@ -45,9 +45,10 @@ public class Menu extends AppCompatActivity {
          //   String name=city.name.toString();
             intent.putExtra("coordenadas",city.getCoord().toString());
          //   intent.putExtra("nombre_ciudad",city.getName());
+
             finish();
 
-          //  startActivity(intent);
+          // startActivity(intent);
 
         });
 
