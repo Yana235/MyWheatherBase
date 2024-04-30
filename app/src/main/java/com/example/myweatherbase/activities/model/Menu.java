@@ -40,15 +40,19 @@ public class Menu extends AppCompatActivity {
 
 
         enviar.setOnClickListener(view->{
-        Intent intent=new Intent();
-            City city=(City) spinner.getSelectedItem();
-         //   String name=city.name.toString();
-            intent.putExtra("coordenadas",city.getCoord().toString());
-         //   intent.putExtra("nombre_ciudad",city.getName());
+            try {
+                Intent intent = new Intent();
+                City city = (City) spinner.getSelectedItem();
+                //   String name=city.name.toString();
+                intent.putExtra("coordenadas", city.getCoord().toString());
+                //   intent.putExtra("nombre_ciudad",city.getName());
 
-            finish();
+                finish();
 
-          // startActivity(intent);
+                // startActivity(intent);
+            }catch(Exception e){
+                e.getStackTrace();
+            }
 
         });
 

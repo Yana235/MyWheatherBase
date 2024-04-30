@@ -64,12 +64,18 @@ public class MainActivity extends BaseActivity implements CallInterface {
                               }
 
                       );
-              anyiadir.setOnClickListener(view -> {
-                  Intent intent = new Intent(this, Menu.class);
-                //  activityResultLauncher.launch(intent);
-                  resultLauncher.launch(intent);
 
-              });
+                  anyiadir.setOnClickListener(view -> {
+                      try{
+                      Intent intent = new Intent(this, Menu.class);
+                      //  activityResultLauncher.launch(intent);
+                      resultLauncher.launch(intent);
+                      }catch(Exception e){
+                          e.getStackTrace();
+                      }
+                  });
+
+
 
         // Mostramos la barra de progreso y ejecutamos la llamada a la API
 
