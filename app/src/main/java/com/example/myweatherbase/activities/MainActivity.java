@@ -54,7 +54,9 @@ public class MainActivity extends BaseActivity implements CallInterface {
 
                              // try{
                                   coord = result.getData().getExtras().getString("coordenadas");
+                                     executeCall(this);
 /*
+
                               }catch (NullPointerException e){
                                   e.getStackTrace();
                               }
