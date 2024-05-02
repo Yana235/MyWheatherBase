@@ -25,6 +25,7 @@ public class City implements Serializable {
     public Coord getCoord(){
         return coord;
     }
+
     public String getName(){
         return name;
     }
