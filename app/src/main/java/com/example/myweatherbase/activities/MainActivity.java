@@ -2,6 +2,7 @@ package com.example.myweatherbase.activities;
 
     import android.os.Bundle;
 
+    import androidx.recyclerview.widget.DividerItemDecoration;
     import androidx.recyclerview.widget.LinearLayoutManager;
     import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +25,7 @@ public class MainActivity extends BaseActivity implements CallInterface {
           super.onCreate(savedInstanceState);
               setContentView(R.layout.main_activity);
               recycler=findViewById(R.id.recycler);
+             setupRecyclerView();
           showProgress();
         executeCall(this);
 
@@ -82,6 +84,15 @@ public class MainActivity extends BaseActivity implements CallInterface {
             recycler.setLayoutManager(new LinearLayoutManager(this));
 
         }
+    private void setupRecyclerView() {
+       // RecyclerView recyclerView = findViewById(R.id.recycler);
+       // recyclerView.setAdapter(new MaterialPaletteAdapter(buildColors()));
+          recycler.setLayoutManager(new LinearLayoutManager(this));
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recycler.getContext(),
+                ((LinearLayoutManager) recycler.getLayoutManager()).getOrientation());
+        recycler.addItemDecoration(dividerItemDecoration);
+    }
 
 
 }

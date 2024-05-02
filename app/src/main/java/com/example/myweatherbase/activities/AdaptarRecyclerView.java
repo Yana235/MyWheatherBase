@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myweatherbase.R;
@@ -32,6 +34,8 @@ public class AdaptarRecyclerView extends
         //root=Connector.getConector().get(Root.class,"lat=39.5862518&lon=-0.5411163");
 
     }
+
+    
     @NonNull
     @Override
     public AdaptarRecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent,

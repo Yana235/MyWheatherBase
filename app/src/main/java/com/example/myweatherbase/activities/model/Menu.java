@@ -19,6 +19,7 @@ public class Menu extends AppCompatActivity {
     private TextView textInfo;
     private Spinner spinner;
     private Button enviar;
+    private City city;
 
     @Override
     public void onCreate(Bundle savedInstance){
@@ -34,14 +35,15 @@ public class Menu extends AppCompatActivity {
                 android.R.layout.simple_spinner_item,
                         RepositoryCity.getInstance().getAll());
 
-        spinner.setAdapter(adaptadorSpinner);
 
+        spinner.setAdapter(adaptadorSpinner);
 
         enviar.setOnClickListener(view->{
 
                 Intent intent = new Intent(this, MainActivity.class);
+            city = (City) spinner.getSelectedItem();
+            bienvenida.setImageResource(city.getImage());
 
-                City city = (City) spinner.getSelectedItem();
                 if (city != null) {
                     String coord=city.getCoord().toString();
                     intent.putExtra("coordenadas", coord);

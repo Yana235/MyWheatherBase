@@ -14,12 +14,17 @@ public class City implements Serializable {
     public int sunrise;
     public int sunset;
     public static City city;
+    public int image;
 
 
     public City(String nam, Coord cord, int img){
         this.name=nam;
         this.coord=cord;
+        this.image=img;
 
+    }
+    public int getImage(){
+        return image;
     }
 
 
