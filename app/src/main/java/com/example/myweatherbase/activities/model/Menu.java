@@ -32,25 +32,25 @@ public class Menu extends AppCompatActivity {
         ArrayAdapter<City>adaptadorSpinner=
                 new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,
-                        RepositoryCoord.getInstance().getAll());
+                        RepositoryCity.getInstance().getAll());
 
         spinner.setAdapter(adaptadorSpinner);
 
 
         enviar.setOnClickListener(view->{
 
-                Intent intent = new Intent();
+                Intent intent = new Intent(this, MainActivity.class);
 
                 City city = (City) spinner.getSelectedItem();
                 if (city != null) {
                     String coord=city.getCoord().toString();
-                    //   String name=city.name.toString();
                     intent.putExtra("coordenadas", coord);
-                    //   intent.putExtra("nombre_ciudad",city.getName());
                     setResult(RESULT_OK,intent);
-                    finish();
+                    startActivity(intent);
+                  //  finish();
                 }else {
-                    setResult(RESULT_CANCELED); // Indicar que la operación fue cancelada si no se seleccionó ninguna ciudad
+                    setResult(RESULT_CANCELED);
+                    // Indicar que la operación fue cancelada si no se seleccionó ninguna ciudad
 
                 }
 

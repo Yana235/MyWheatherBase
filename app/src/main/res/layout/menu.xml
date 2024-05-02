@@ -7,9 +7,9 @@
 
     <ImageView
         android:id="@+id/imageBienvenida"
-        android:layout_width="180dp"
-        android:layout_height="155dp"
-        android:layout_marginStart="115dp"
+        android:layout_width="216dp"
+        android:layout_height="190dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="72dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,17 +19,18 @@
         android:id="@+id/textViewC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="188dp"
+        android:layout_marginStart="150dp"
         android:layout_marginTop="32dp"
-        android:text="TextView"
+        android:text="Elige una ciudad"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageBienvenida" />
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="411dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="42dp"
+        android:layout_width="200dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewC" />
 
@@ -37,9 +38,9 @@
         android:id="@+id/buttonEnviar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="169dp"
-        android:layout_marginTop="75dp"
-        android:text="Button"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="76dp"
+        android:text="PREVISION"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 </androidx.constraintlayout.widget.ConstraintLayout>

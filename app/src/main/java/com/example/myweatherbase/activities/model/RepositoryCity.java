@@ -1,24 +1,26 @@
 package com.example.myweatherbase.activities.model;
 
+import com.example.myweatherbase.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepositoryCoord {
+public class RepositoryCity {
 
     private List<City> ciudades;
 
-    private static RepositoryCoord instance;
-    private RepositoryCoord(){
+    private static RepositoryCity instance;
+    private RepositoryCity(){
         ciudades=new ArrayList<>();
         ciudades.add(new City("Madrid",new Coord(39.1999323,-4.383741)));
         ciudades.add(new City("Murcia",new Coord(37.9805037,-1.1271753)));
         ciudades.add(new City("Barcelona",new Coord(37.9804102,-1.2507862)));
-        ciudades.add(new City("Valencia",new Coord(39.407669,-0.5263215)));
+        ciudades.add(new City("Valencia",new Coord(39.407669,-0.5263215)), R.mipmap.ic_valencia_foreground);
 
     }
-    public static RepositoryCoord getInstance(){
+    public static RepositoryCity getInstance(){
         if(instance==null)
-            instance=new RepositoryCoord();
+            instance=new RepositoryCity();
         return instance;
     }
 

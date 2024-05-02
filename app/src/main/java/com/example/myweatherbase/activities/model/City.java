@@ -1,5 +1,7 @@
 package com.example.myweatherbase.activities.model;
 
+import android.widget.ImageView;
+
 import java.io.Serializable;
 
 public class City implements Serializable {
@@ -14,7 +16,7 @@ public class City implements Serializable {
     public static City city;
 
 
-    public City(String nam,Coord cord){
+    public City(String nam, Coord cord, int img){
         this.name=nam;
         this.coord=cord;
 
