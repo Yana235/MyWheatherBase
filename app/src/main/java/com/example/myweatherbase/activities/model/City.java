@@ -22,6 +22,7 @@ public class City implements Serializable {
 
     }
 
+
     public Coord getCoord(){
         return coord;
     }
